@@ -72,12 +72,12 @@ def angle(v1, v2):
     else:
         return -1
 #Search
-def retrieveImage(base64):
+def retrieveImage(_base64):
     #Query vector
     # print('Input query: ')
     # query = input()
     # query = preprocess(query)
-    query = ObjectRecognize.get_keyword(base64)
+    query = ObjectRecognize.get_keyword(_base64)
     query_vector = tf_idf(query, inverted_index.keys())
     returnImg = []
     result = dict()

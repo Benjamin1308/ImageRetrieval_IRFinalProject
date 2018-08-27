@@ -31,9 +31,11 @@ def obj_detection(path):
     return results
 
 def get_keyword(base64):
-	key = ""
-	# Upload image
+    key = ""
+    # Upload image
     url = "http://api.mmlab.uit.edu.vn/api/v1/file/image"
+    dat = "data:image/jpeg;base64," + base64
+    payload = "base64=" + urllib.parse.quote(dat)
     querystring = {"method": "base64"}
     headers = {
         'Content-Type': "application/x-www-form-urlencoded",
@@ -42,11 +44,11 @@ def get_keyword(base64):
     }
     req = requests.post(url, data=payload, headers=headers, params=querystring)
     file_id = str(req.json().get('fileID'))
-    print (file_id)
-    
+    print(file_id)
+
     u = "http://api.mmlab.uit.edu.vn/api/v1/vision/object-detection?fileName=out.jpg&fileID=" + file_id + "&method=model1"
     resp = requests.get(u)
     results = resp.json().get('result')
     for obj in results:
-	    	key += obj["name"] + " "
+            key += obj["name"] + " "
     return key
