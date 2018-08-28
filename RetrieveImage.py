@@ -88,9 +88,6 @@ def retrieveImage(_base64):
     print(result_sorted)
     #Print top 10 result
     for i in range(10):
-        image = open(path_input+'/'+file_list[result_sorted[i][0]], 'rb')
-        image_read = image.read()
-        encoded = base64.encodestring(image_read)
-        base64String = "data:image/jpeg;base64," + encoded.decode("utf-8")
-        returnImg.append(base64String)
+        url = 'https://res.cloudinary.com/doq4th6f3/image/upload/v1535467892/ImageRetrieve/' + file_list[result_sorted[i][0]]
+        returnImg.append(url)
     return returnImg
