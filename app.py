@@ -19,7 +19,7 @@ def check():
     if (request.method == 'POST'):
       def generate():
           yield "<br/>"   # notice that we are yielding something as soon as possible
-          with app.app_context():    
+          with app.test_request_context():
             yield RetrieveImage.retrieveImage(request.form['base64'])
       return Response(generate(), mimetype='text/html')
 
