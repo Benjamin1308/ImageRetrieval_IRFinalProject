@@ -10,7 +10,7 @@ class ImageList(Resource):
       parser = reqparse.RequestParser()
       parser.add_argument("base64")
       args = parser.parse_args()
-
+      yield "<br/>"
       images = retrieveImage(str(args["base64"]))
       if len(images) == 0:
         return "No matching result", 200
