@@ -14,13 +14,7 @@ class ImageList(Resource):
       if len(images) == 0:
         return "No matching result", 200
       return images, 200
-
-class ByPass(Resource):
-  def post(self):
-    return None, 200
       
 api.add_resource(ImageList, '/images')
-api.add_resource(ByPass, '/images')
 
-if __name__ == '__main__':
-  app.run()
+app.run()
