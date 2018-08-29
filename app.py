@@ -18,12 +18,11 @@ app = Flask(__name__)
 def check():
     if (request.method == 'POST'):
       request.get_data()
-      temp = request.json['base64']
-      # print(temp)
+      base64 = request.json['base64']
       def generate():
           yield ""   # notice that we are yielding something as soon as possible
           with app.test_request_context():
-            yield str(RetrieveImage.retrieveImage(temp))
+            yield str(RetrieveImage.retrieveImage(base64))
       return Response(generate(), mimetype='text/html')
 
 if __name__ == '__main__':

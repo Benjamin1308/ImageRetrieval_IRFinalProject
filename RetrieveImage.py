@@ -77,8 +77,6 @@ def retrieveImage(_base64):
     # print('Input query: ')
     # query = input()
     # query = preprocess(query)
-    print(_base64)
-    print('haha')
     query = ObjectRecognize.get_keyword(_base64)
     query_vector = tf_idf(query, inverted_index.keys())
     returnImg = []
