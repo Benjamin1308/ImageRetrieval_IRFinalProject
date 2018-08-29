@@ -17,4 +17,5 @@ class ImageList(Resource):
       
 api.add_resource(ImageList, '/images')
 
-app.run()
+if __name__ == '__main__':
+  app.run()
