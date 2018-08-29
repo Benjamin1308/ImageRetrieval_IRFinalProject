@@ -17,6 +17,7 @@ app = Flask(__name__)
 @app.route('/images', methods=['POST'])
 def check():
     if (request.method == 'POST'):
+      print(request.form['base64'])
       def generate():
           yield "<br/>"   # notice that we are yielding something as soon as possible
           with app.test_request_context():
