@@ -1,19 +1,25 @@
-from flask import Flask
-from flask_restful import Resource, Api, reqparse
-from RetrieveImage import retrieveImage
+from flask import Flask, Response
+import requests
 
 app = Flask(__name__)
-api = Api(app)
 
-class ImageList(Resource):
-    def post(self):
-      parser = reqparse.RequestParser()
-      parser.add_argument("base64")
-      args = parser.parse_args()
-      images = retrieveImage(str(args["base64"]))
-      return images, 200
-      
-api.add_resource(ImageList, '/images')
+def some_long_calculation(number):
+  '''
+  here will be some long calculation using this number
+  let's simulate that using sleep for now :)
+  '''
+  import time
+  time.sleep(5)
+
+  return number
+
+@app.route('/')
+def check():
+    def generate():
+      for i in range(10):
+        yield "<br/>"   # notice that we are yielding something as soon as possible
+        yield str(some_long_calculation(i))
+    return Response(generate(), mimetype='text/html')
 
 if __name__ == '__main__':
-  app.run()
+    app.run(host='0.0.0.0', port=8080, debug=True)
