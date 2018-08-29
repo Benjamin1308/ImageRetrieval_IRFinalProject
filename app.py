@@ -17,10 +17,11 @@ app = Flask(__name__)
 @app.route('/images', methods=['POST'])
 def check():
     if (request.method == 'POST'):
+      print(request.get_data())
       def generate():
           yield "<br/>"   # notice that we are yielding something as soon as possible
           with app.test_request_context():
-            yield RetrieveImage.retrieveImage(request.form.get('base64'))
+            # yield RetrieveImage.retrieveImage()
       return Response(generate(), mimetype='text/html')
 
 if __name__ == '__main__':
