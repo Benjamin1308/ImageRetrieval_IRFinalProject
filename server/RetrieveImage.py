@@ -83,9 +83,9 @@ def retrieveImage(_base64):
     result = dict()
     for i in range(len(doc_vector_list)):
         result.update({i:angle(doc_vector_list[i], query_vector)})
-    print(result)
+    # print(result)
     result_sorted = sorted(result.items(),key=lambda tup: tup[1], reverse = True)
-    print(result_sorted)
+    # print(result_sorted)
     #Print top 10 result
     for i in range(10):
         url = 'https://res.cloudinary.com/doq4th6f3/image/upload/v1535467892/ImageRetrieve/' + file_list[result_sorted[i][0]]
