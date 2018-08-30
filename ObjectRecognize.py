@@ -49,6 +49,8 @@ def get_keyword(base64):
     u = "http://api.mmlab.uit.edu.vn/api/v1/vision/object-detection?fileName=out.jpg&fileID=" + file_id + "&method=model1"
     resp = requests.get(u)
     results = resp.json().get('result')
+    if results == None:
+        return ''
     for obj in results:
             key += obj["name"] + " "
     return key
