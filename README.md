@@ -15,15 +15,10 @@
 
 - Clone the repo
 
-- Run the React app
-  
-  - (in root directory)
-  
-    ```yarn && yarn start```
+- Open ```build/index.html``` to run the React app
 
 - Start the Flask server
   - NOTE: **PYTHON 3** is required to run the python app
-  - From root directory, change current directory to ```server```
   
     ```cd server && pip install -r requirements_local.txt```
 
